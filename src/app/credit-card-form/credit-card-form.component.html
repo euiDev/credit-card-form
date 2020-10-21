@@ -1,0 +1,26 @@
+<div class="columns">
+  <div class="column">
+    <app-card
+    [name]="creditCardForm.get('name').value"
+    [cardNumber]="creditCardForm.get('cardNumber').value"
+    [expiration]="creditCardForm.get('expiration').value"></app-card>
+  </div>
+  <div class="column">
+    <form [formGroup]="creditCardForm" (ngSubmit)="onSubmit()">
+      <app-input label="Name" [control]="creditCardForm.get('name')"></app-input>
+      <app-input label="Card Number" [control]="creditCardForm.get('cardNumber')"></app-input>
+      <div class="columns">
+        <div class="column">
+          <app-input label="Expiration (MM/YY)" [control]="creditCardForm.get('expiration')"></app-input>
+        </div>
+        <div class="column">
+          <app-input label="Security Code" [control]="creditCardForm.get('securityCode')"></app-input>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="button is-primary" type="submit" [disabled]="creditCardForm.invalid" >Submit</button>
+        <button class="button is-warning" type="button" (click)="onClickReset()">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>
